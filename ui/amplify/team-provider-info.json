@@ -1,0 +1,31 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-planthealth-dev-131619-authRole",
+      "UnauthRoleArn": "arn:aws:iam::847524656286:role/amplify-planthealth-dev-131619-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::847524656286:role/amplify-planthealth-dev-131619-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-planthealth-dev-131619-deployment",
+      "UnauthRoleName": "amplify-planthealth-dev-131619-unauthRole",
+      "StackName": "amplify-planthealth-dev-131619",
+      "StackId": "arn:aws:cloudformation:us-east-1:847524656286:stack/amplify-planthealth-dev-131619/72a95800-37f5-11ee-968e-0ab4ccc21687",
+      "AmplifyAppId": "d1gyetaszuiowl",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-planthealth-dev-131619-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "function": {
+        "planthealth4225440342254403CustomMessage": {
+          "REDIRECTURL": "",
+          "EMAILSUBJECT": "",
+          "EMAILMESSAGE": ""
+        }
+      },
+      "auth": {
+        "planthealth3d071830": {
+          "facebookAppId": "333920418971004",
+          "googleClientId": "690106620063-34guh2ekv8mup8u33q4bvmtdusfutju8.apps.googleusercontent.com"
+        }
+      }
+    }
+  }
+}

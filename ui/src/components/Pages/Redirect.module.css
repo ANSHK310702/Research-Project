@@ -1,0 +1,14 @@
+body {
+    background-color: #5B8266 ;
+}
+
+.submit {
+    background-color: #D9D9D9;
+    color: black;
+}
+
+.submit:hover {
+    background-color: #3E6259 ;
+    color: white;
+    
+}

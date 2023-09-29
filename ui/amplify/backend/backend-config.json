@@ -1,0 +1,78 @@
+{
+  "auth": {
+    "planthealth3d071830": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OPTIONAL",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL",
+          "FAMILY_NAME",
+          "GIVEN_NAME"
+        ],
+        "socialProviders": [
+          "FACEBOOK",
+          "GOOGLE"
+        ],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {},
+  "parameters": {
+    "AMPLIFY_auth_planthealth3d071830_facebookAppId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "planthealth3d071830"
+        }
+      ]
+    },
+    "AMPLIFY_auth_planthealth3d071830_googleClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "planthealth3d071830"
+        }
+      ]
+    },
+    "AMPLIFY_function_planthealth4225440342254403CustomMessage_EMAILMESSAGE": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "planthealth4225440342254403CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_planthealth4225440342254403CustomMessage_EMAILSUBJECT": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "planthealth4225440342254403CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_planthealth4225440342254403CustomMessage_REDIRECTURL": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "planthealth4225440342254403CustomMessage"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,108 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    min-height: 100vh; 
+    max-width:  50%;
+    background-color: #0c0c0c;
+    margin-top: 5%;
+    border-radius: 10%;
+    box-shadow: 20px 20px 20px #0000007c;
+}
+
+.formHeading {
+    color: #FFF;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    justify-self: center;
+    align-self: center;
+    margin-top: 4%;
+}
+.formHeading4 {
+    color: #FFF;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-top: 4%;
+    justify-content: left;
+    align-self: center;
+    display: flex;
+}
+
+.iconBox {
+    background-color: #5B8266;
+    margin:  5%;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 20px;
+    
+}
+
+
+.iconBox:hover {
+    background-color: #294936;
+    cursor: pointer;
+}
+
+.selected {
+    margin:  5%;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 20px;
+    background-color: #294936;
+}
+
+.button {
+    padding: 20px 30px ;
+    margin: 4%;
+    background-color: #5a8165;
+    color: white;
+    border-radius: 10px;
+}
+
+.button:hover {
+    background-color: #294936;
+
+}
+
+.selectedButton {
+    padding:20px 30px ;
+    margin: 4%;
+    background-color: #294936;
+    color: white;
+    border-radius: 10px;
+}
+
+.submit {
+    background-color: #D9D9D9;
+    color: black;
+    border: none;
+}
+
+.submit:hover {
+    background-color: #3E6259 ;
+    border: none;
+}
+
+.predictionText {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 20px;
+  }
+
+.solutionText {
+    font-size: 20px;
+    color: #ffffff;
+    margin-top: 20px;
+    white-space: pre-line;
+  }

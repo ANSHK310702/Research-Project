@@ -7,7 +7,7 @@ import { redirect, useNavigate } from "react-router-dom";
 import FacebookLoginButton from "./SignInWithFacebook";
 import { CognitoIdentityServiceProvider } from "aws-sdk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faAmazon, faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 const initialFormState = {
   email: "",
@@ -145,13 +145,14 @@ const LogIn = () => {
           </div>
           <div className="btn justify-content-center d-flex">
             <button
+            className="btn btn-warning"
               onClick={async (e) => {
                 e.preventDefault();
                 const credentials = await Auth.federatedSignIn({ provider: "LoginWithAmazon" });
                 
               }}
             >
-               Sign in with Amazon
+              <FontAwesomeIcon icon={faAmazon}/> Sign in with Amazon
             </button>
           </div>
         </form>

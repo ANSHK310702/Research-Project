@@ -93,25 +93,49 @@ const Service = () => {
   const [plotURL, setPlotURL] = useState(null);
   const [historyURL, setHistoryURL] = useState(null);
 
+  const [rgb_image, setRGBImage] = useState(null);
+  const [ndvi_image, setNDVIImage] = useState(null);
+  const [scaled_ndvi_image, setScaledNDVIImage] = useState(null);
+
+
   const handleSubmit = async (e) => {
+    // Reset the state
+    setPrediction(null); 
+    setSolution(null); 
+    setImageURL(null);
+    setPlotURL(null);
+    setHistoryURL(null);
+    setRGBImage(null);
+    setNDVIImage(null);
+    setScaledNDVIImage(null);
+
+
     const data = new FormData();
     for (const key in formData) {
       data.append(key, formData[key]);
     }
 
-    // Check if all required data is selected/uploaded
-    if (!imageType || !selectedOption || !formData) {
-      alert("Please select an image type, model type, and upload an image.");
-      return;
-    }
     e.preventDefault();
 
     console.log("handleSubmit called"); // Add this line
     setLoading(true); // Start loading
 
     data.append("imageType", imageType);
-    data.append("modelType", selectedOption);
-    // data.append('image', uploadedImage);
+
+    if (imageType == "leaf") {
+      // Check if all required data is selected/uploaded
+      if (!imageType || !selectedOption || !formData) {
+        alert("Please select an image type, model type, and upload an image.");
+        return;
+      }
+      data.append('modelType', selectedOption);
+    }
+    else {
+      if (!imageType || !formData) {
+        alert("Please select an image type and upload an image.");
+        return;
+      }
+    }
 
     try {
       const response = await axios.post("http://localhost:5000/predict", data, {
@@ -120,32 +144,74 @@ const Service = () => {
         },
       });
 
-      setPrediction(response.data.prediction); // Update state with prediction
-      setSolution(response.data.solution); // Update state with solution
-      setImageURL(URL.createObjectURL(formData.image));
+      if (imageType == "leaf") { 
+        setPrediction(response.data.prediction); // Update state with prediction
+        setSolution(response.data.solution); // Update state with solution
+        setImageURL(URL.createObjectURL(formData.image));
 
-      // Fetch the plot image
-      const plotResponse = await axios.get("http://localhost:5000/get_plot", {
-        responseType: "arraybuffer", // Ensure the response is treated as binary data
-      });
-      const plotURL = URL.createObjectURL(
-        new Blob([plotResponse.data], { type: "image/png" })
-      );
-      setPlotURL(plotURL);
+        // Fetch the plot image
+        const plotResponse = await axios.get('http://localhost:5000/get_plot', {
+          responseType: 'arraybuffer', // Ensure the response is treated as binary data
+        });
+        const plotURL = URL.createObjectURL(new Blob([plotResponse.data], { type: 'image/png' }));
+        setPlotURL(plotURL);
 
-      console.log("Plot URL:", plotURL); // Add this line to check the plot URL
+        console.log('Plot URL:', plotURL); // Add this line to check the plot URL
 
-      // Fetch the training history image
-      const historyResponse = await axios.get(
-        "http://localhost:5000/get_training_history",
-        {
-          responseType: "arraybuffer", // Ensure the response is treated as binary data
+        var historyResponse = null;
+        // Fetch the training history/validation score image
+        if (selectedOption == "CNN") {
+          var historyResponse = await axios.get('http://localhost:5000/get_training_history', {
+            responseType: 'arraybuffer', // Ensure the response is treated as binary data
+          });
         }
-      );
-      const historyURL = URL.createObjectURL(
-        new Blob([historyResponse.data], { type: "image/png" })
-      );
-      setHistoryURL(historyURL);
+        else if (selectedOption == "Random Forest") {
+          var historyResponse = await axios.get('http://localhost:5000/get_rf_score', {
+            responseType: 'arraybuffer', // Ensure the response is treated as binary data
+          });
+        }
+        else if (selectedOption == "Decision Tree") {
+          var historyResponse = await axios.get('http://localhost:5000/get_dt_score', {
+            responseType: 'arraybuffer', // Ensure the response is treated as binary data
+          });
+        }
+        else if (selectedOption == "Logistic Regression") {
+          var historyResponse = await axios.get('http://localhost:5000/get_lr_score', {
+            responseType: 'arraybuffer', // Ensure the response is treated as binary data
+          });
+        }
+        else if (selectedOption == "Linear Discriminant Analysis") {
+          var historyResponse = await axios.get('http://localhost:5000/get_lda_score', {
+            responseType: 'arraybuffer', // Ensure the response is treated as binary data
+          });
+        }
+        const historyURL = URL.createObjectURL(new Blob([historyResponse.data], { type: 'image/png' }));
+        setHistoryURL(historyURL);
+
+      }
+      else {  
+          // Fetch the uploaded RGB satellite image
+          const rgbResponse = await axios.get('http://localhost:5000/get_rgb_image', {
+            responseType: 'arraybuffer', // Ensure the response is treated as binary data
+          });
+          const rgbURL = URL.createObjectURL(new Blob([rgbResponse.data], { type: 'image/png' }));
+          setRGBImage(rgbURL);
+
+          // Fetch the uploaded NDVI satellite image
+          const ndviResponse = await axios.get('http://localhost:5000/get_ndvi_image', {
+            responseType: 'arraybuffer', // Ensure the response is treated as binary data
+          });
+          const ndviURL = URL.createObjectURL(new Blob([ndviResponse.data], { type: 'image/png' }));
+          setNDVIImage(ndviURL);
+
+          // Fetch the uploaded scaled NDWI satellite image
+          const scaled_ndviResponse = await axios.get('http://localhost:5000/get_scaled_ndvi_image', {
+            responseType: 'arraybuffer', // Ensure the response is treated as binary data
+          });
+          const scaled_ndviURL = URL.createObjectURL(new Blob([scaled_ndviResponse.data], { type: 'image/png' }));
+          setScaledNDVIImage(scaled_ndviURL);
+
+      }
 
       // Handle the response as needed
     } catch (error) {
@@ -306,7 +372,7 @@ const Service = () => {
             className={"btn btn-primary " + styles.submit}
             onClick={handleSubmit}
           >
-            Predict
+            Submit
           </button>
         </div>
 
@@ -317,12 +383,18 @@ const Service = () => {
             <>
               {imageURL && <img src={imageURL} alt="Uploaded" />}
               {prediction && (
-                <p className={styles.predictionText}>Result: {prediction}</p>
+                <p className={styles.predictionText}>
+                  Result: {prediction}
+                </p>
               )}
               {plotURL && <img src={plotURL} alt="Plot" />}
               {historyURL && <img src={historyURL} alt="Training History" />}
 
               {solution && <p className={styles.solutionText}>{solution}</p>}
+              
+              {rgb_image && <img src={rgb_image} alt="RGB Satellite Image" />}
+              {ndvi_image && <img src={ndvi_image} alt="NDVI Image" />}
+              {scaled_ndvi_image && <img src={scaled_ndvi_image} alt="Scaled NDVI Image" />}
             </>
           )}
         </div>

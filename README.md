@@ -80,4 +80,8 @@ cd ui
 3. Run the Web Application
 ```
 npm start
-```
+```  
+  
+    
+The Final Running Application should look like this:
+![example](./src/example-running-application.PNG)

@@ -18,16 +18,66 @@ cd Research-Project
 ```
 
 ### 3. Application Setup
-#### Backend Setup
-From the main directory, move to the backend directory:
+#### BackEnd Setup
+1. From the main directory, move to the Backend directory:
 ```
 cd backend
 ```
 
-Install the backend packages:
+2. Install the Backend packages:
 ```
 pip install -r requirements.txt
 ```
 
-An OpenAI API Key is required for the backend. Join [here](https://platform.openai.com/) to retrieve the API Key. Use `.env.template` as a guide to add your OPENAI and change its name to `.env`
+3. An OpenAI API Key is required for the backend. Join [here](https://platform.openai.com/) to retrieve the API Key. Use `.env.template` as a guide to add your OPENAI and change its name to `.env`.
 
+4. Go back to the main directory:
+```
+cd ../
+```
+
+### Frontend Setup
+1. From the main directory, move to the Frontend directory:
+```
+cd ui
+```
+
+2. Install the Frontend Packages:
+```
+npm install
+```
+
+3. Go back to the main directory:
+```
+cd ../
+```
+
+## Run application:
+The application requires 2 Command Prompt windows running at the same time, one for running the backend machine learning server, one for running the Web Application.
+
+### Backend Server
+1. Open a Command Prompt window and go the main directory
+
+2. From the main directory, move to the Backend directory:
+```
+cd backend
+```
+
+3. Run the server:
+```
+python server.py
+```
+
+
+### Frontend UI
+1. Open a Command Prompt window and go the main directory
+
+2. From the main directory, move to the Frontend directory:
+```
+cd ui
+```
+
+3. Run the Web Application
+```
+npm start
+```

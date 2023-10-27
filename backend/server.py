@@ -6,14 +6,16 @@ import tensorflow as tf
 from keras.models import load_model
 import cv2
 import numpy as np
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import openai
-openai.api_key = ""
 import joblib
 import mahotas
 from sklearn.preprocessing import MinMaxScaler
 from osgeo import gdal
 
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 app = Flask(__name__)
 CORS(app)

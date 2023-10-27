@@ -83,5 +83,5 @@ npm start
 ```  
   
     
-The Final Running Application should look like this:
+### The Final running Application should look like this:
 ![example](./src/example-running-application.PNG)

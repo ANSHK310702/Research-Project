@@ -1,5 +1,5 @@
 # Project 29 - Plant Disease Detection     
-
+[![Python Version](https://img.shields.io/badge/python-3.10.0-aff.svg)](https://www.python.org/downloads/release/python-3100/) [![NPM version](http://img.shields.io/npm/v/npm-expansions.svg?style=flat-square)](https://www.npmjs.org/package/npm-expansions)
 ## Requirements:     
 The latest version of [Node.js](https://nodejs.org/en/download/) must be installed to run **`npm`**     
 The following version of [Python 3.10.0](https://www.python.org/downloads/release/python-3100/) must be install to run **`python`** and **`pip`**     

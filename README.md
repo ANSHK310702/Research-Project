@@ -1,5 +1,13 @@
-# Project 29 - Plant Disease Detection     
+# Project 29 - Plant Disease Detection 🌱      
 [![NPM version](http://img.shields.io/npm/v/npm-expansions.svg?style=flat-square)](https://www.npmjs.org/package/npm-expansions) [![Python Version](https://img.shields.io/badge/python-3.10.0-aff.svg)](https://www.python.org/downloads/release/python-3100/) 
+
+The Plant Disease Detection web application is an innovative and user-friendly tool designed to help gardeners, farmers, and plant enthusiasts identify and combat diseases that can affect their plants. With a user-friendly interface, robust disease detection algorithms, and a vast plant disease database, this application is a valuable resource for anyone looking to keep their plants healthy and thriving.
+
+## Key Features
+🌿 Plant Disease Recognition: Upload images of your plants and instantly receive accurate disease diagnosis.  
+📷 Image Analysis: High-quality image processing techniques to ensure precise disease detection.  
+💡 Educational Resources: Learn about plant diseases, prevention, and treatment through our educational materials.  
+
 ## Requirements:     
 The latest version of [Node.js](https://nodejs.org/en/download/) must be installed to run **`npm`**     
 The following version of [Python 3.10.0](https://www.python.org/downloads/release/python-3100/) must be install to run **`python`** and **`pip`**     

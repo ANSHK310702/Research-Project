@@ -7,6 +7,7 @@ The Plant Disease Detection web application is an innovative and user-friendly t
 🌿 Plant Disease Recognition: Upload images of your plants and instantly receive accurate disease diagnosis.  
 📷 Image Analysis: High-quality image processing techniques to ensure precise disease detection.  
 💡 Educational Resources: Learn about plant diseases, prevention, and treatment through our educational materials.  
+🔐 Authentication: Create accounts and log in with them or log in with Google, Facebook, or Amazon.
 
 ## Requirements:     
 The latest version of [Node.js](https://nodejs.org/en/download/) must be installed to run **`npm`**     
